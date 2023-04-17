@@ -10,17 +10,39 @@ void main()
 {
 	char stop;
 	uint8_t LCS=0;
-	int32_t arr[10];
-	printf("enter 10 elements");
-	for(int i=0;i<10;i++)
+	int error;
+	int32_t arr[10],n;
+	printf("enter number of elements elements\n");
+	scanf("%d",&n);
+	if(n>0&&n<=10)
+	{
+		printf("enter %d elements\n",n);
+	for(int i=0;i<n;i++)
 	{
 	scanf("%d",&arr[i]);		
 	}
-	insertionSort(arr,10)	;
-	printArray(arr,10);
+	insertionSort(arr,n);
+	}
 	
-	lcsGetSize(arr, 10, &LCS);
-	printf("size= %d",LCS);
+	//printArray(arr,n);
+	
+	error = lcsGetSize(arr, n, &LCS);
+	if(error == -1)
+	{
+			printf("no array elements\n");
+	}
+	else if(error == -2)
+		{
+			printf("array size is more than 10 elements\n");
+		}
+	else if(error == -3)
+		{
+			printf("No consecutive sequence\n");
+		}
+	else if(error == 0)
+		{
+			printf("LCS size = %d",LCS);
+		}
 	system("pause");
 }
 
@@ -52,6 +74,14 @@ void printArray(int32_t *array, uint8_t arraySize)
 int8_t lcsGetSize(int32_t *array, uint8_t arraySize, uint8_t *sizeofLCS)
 {
 	int max=0,current=0;
+	if(arraySize==0)
+	{
+		return -1;
+	}
+	else if(arraySize>10)
+	{
+		return -2;
+	}
 	for(int i=0;i<arraySize-1;i++)
 	{
 		if(array[i+1]==(array[i]+1))
@@ -67,5 +97,13 @@ int8_t lcsGetSize(int32_t *array, uint8_t arraySize, uint8_t *sizeofLCS)
 			max=current+1;
 		}
 		*sizeofLCS=max;
+	}
+	if(max==0)
+	{
+		return -3;
+	}
+	else
+	{
+		return 0;
 	}
 }
