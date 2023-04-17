@@ -92,7 +92,7 @@ int8_t lcsGetSize(int32_t *array, uint8_t arraySize, uint8_t *sizeofLCS)
 		{
 			current=0;
 		}
-		if(current+1>max)
+		if(current>0 && current+1>max)
 		{
 			max=current+1;
 		}
