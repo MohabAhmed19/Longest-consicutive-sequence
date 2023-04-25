@@ -25,9 +25,16 @@ void main()
 	}
 	insertionSort(arr,n);
 	}
-	
-	printArray(arr,n);
-	
+	if(n==0)
+	{
+		printf("no array elements\n");
+	}
+	else if(n<=10)
+	{
+		printArray(arr,n);
+	}
+	else
+		printf("number of elements is greater than 10\n");
 	}
 }
 
