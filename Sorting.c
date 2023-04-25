@@ -26,27 +26,9 @@ void main()
 	insertionSort(arr,n);
 	}
 	
-	//printArray(arr,n);
+	printArray(arr,n);
 	
-	error = lcsGetSize(arr, n, &LCS);
-	if(error == -1)
-	{
-			printf("no array elements\n");
 	}
-	else if(error == -2)
-		{
-			printf("array size is more than 10 elements\n");
-		}
-	else if(error == -3)
-		{
-			printf("No consecutive sequence\n");
-		}
-	else if(error == 0)
-		{
-			printf("LCS size = %d\n",LCS);
-		}
-	}
-	system("pause");
 }
 
 
